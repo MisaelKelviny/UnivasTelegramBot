@@ -13,7 +13,7 @@ def boleto(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='Seu boleto pode ser encontrado dentro do portal do aluno')
 
 def contato(bot, update):
-    msg = "0800 039 0010 (Ligação Gratuita)\n"
+    msg = "0800 039 0010 (Ligação Gratuita)\n\n\n"
     msg += "Reitoria: \n Avenida Pref. Tuany Toledo, 470 - CEP 37554-210 - Pouso Alegre, MG \n Telefone: (35) 3449 9211\n E-mail: reitoria@univas.edu.br \n\n"
     msg += "Unidade Central: \n Avenida Cel. Alfredo Custódio de Paula, 320 - CEP 37553-068 - Pouso Alegre, MG \n Telefone: (35) 3449 8772 \n E-mail: facimpa@univas.edu.br\n\n"
     msg += "Unidade Fátima: \n Avenida Pref. Tuany Toledo, 470 - CEP 37554-210 - Pouso Alegre, MG \n Telefone: (35) 3449 9257 \n E-mail: fafiep@univas.edu.br\n\n"
