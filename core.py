@@ -1,4 +1,6 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler
+from telegram import *
+from functools import wraps
 import apiai
 import json
 import re
@@ -8,9 +10,22 @@ import re
 updater = Updater(token='866382424:AAGVE7O492Xzak3OEwqKUojYF2TR7tNhb6A')
 dispatcher = updater.dispatcher
 
+def send_typing_action(func):
+    """Sends typing action while processing func command."""
+
+    @wraps(func)
+    def command_func(update, context, *args, **kwargs):
+        context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
+        return func(update, context,  *args, **kwargs)
+
+    return command_func
+
+@send_typing_action
+def my_handler(update, context):
+    pass # Will send 'typing' action while processing the request.
+
+
 # Command processing
-
-
 def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id,
                      text='Olá, Bem vindo ao chat da UNIVAS! Em que posso ajudar ?')
@@ -82,9 +97,11 @@ def secretaria(bot, update):
     Tel. (35) 3449-9271"
     bot.send_message(chat_id=update.message.chat_id, text=msg)
 
+def vestibular(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="Fique por dentro das datas dos nossos vestibulates em: \n\n http://portalvestibular.univas.edu.br/portalVestibular2020/index.asp?utm_source=site&utm_medium=botao&utm_campaign=vestibular2020")
+
+
 # essa tem que ser sempre a ultima
-
-
 def unknown(update, context):
     context.bot.send_message(chat_id=update.message.chat_id,
                              text="Desculpe não entendi o que você quiz dizer")
@@ -109,8 +126,7 @@ gp_handler=MessageHandler(Filters.regex(re.compile(r'grupo de pesquisa', re.IGNO
 pesquisa_handler=MessageHandler(Filters.regex(re.compile(r'pesquisa', re.IGNORECASE)), pesquisa)
 etica_handler=MessageHandler((Filters.regex(re.compile(r'etica', re.IGNORECASE)) | (Filters.regex(re.compile(r'ética', re.IGNORECASE)))), etica)
 secretaria_handler=MessageHandler(Filters.regex(re.compile(r'secretaria', re.IGNORECASE)), secretaria)
-
-
+vestibular_handler=MessageHandler(Filters.regex(re.compile(r'vestibular', re.IGNORECASE)), vestibular)
 
 # para comandas ou palavras nao reconhecidas tem que ficar no final
 unknown_handler=MessageHandler(Filters.command, unknown)
@@ -126,6 +142,7 @@ dispatcher.add_handler(gp_handler)
 dispatcher.add_handler(pesquisa_handler)
 dispatcher.add_handler(etica_handler)
 dispatcher.add_handler(secretaria_handler)
+dispatcher.add_handler(vestibular_handler)
 dispatcher.add_handler(unknown_handler)
 
 # Start search for updates
