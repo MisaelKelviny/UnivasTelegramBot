@@ -25,12 +25,11 @@ precisaremos conseguir o token para que o chatbot possa interagir com a platafor
 
 ## Em seguida
 Instale os pacotes do bot na sua maquina
-# Markdown
 
-´´´
+```
 pip install python-telegram-bot --upgrade
 
-´´´
+```
 
 ### Para fazer o bot rodar
 
@@ -38,9 +37,8 @@ Baixar este repositorio
 Abrir o prompt de comando
 E rodar o comando dentro do diretorio baixado
 
-# Markdown
 
-´´´
+```
 python core.py
 
-´´´
+```
