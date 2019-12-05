@@ -10,7 +10,11 @@ O repositório oficial do bot é encontrado em:
 https://github.com/python-telegram-bot/python-telegram-bot
 
 Com o python instalado é necessário instalar os pacotes utilizando o gerenciador PIP.
+Instale os pacotes do bot na sua maquina
 
+```
+pip install python-telegram-bot --upgrade
+```
 
 ## Iniciando o bot pelo telegram
 
@@ -22,20 +26,9 @@ precisaremos conseguir o token para que o chatbot possa interagir com a platafor
 - 5 — Escolha um nome de usuario para o chatbot. Este será utilizado para que outras pessoas possam fazer menções, e também, se conectarem com o chatbot via o telegram.me. O nome de usuario deve necessariamente ser único na plataforma e terminar com “bot”. O utilizado aqui foi o Univasbot
 - 6 — Se tudo ocorrer certo, o The BotFather irá enviar um Token de acesso, que é bem parecido com: “591201733:BCDdqQcvAY1vGWYxaCieFZAq95SPKSza”. É exatamente isso que permitirá que o nosso chatbot envie requisições para o Telegram Bot API.
 
-
-## Em seguida
-Instale os pacotes do bot na sua maquina
-
-```
-pip install python-telegram-bot --upgrade
-```
-
 ### Para fazer o bot rodar
 
-Baixar este repositorio
-Abrir o prompt de comando
-E rodar o comando dentro do diretorio baixado
-
+Baixar este repositório, abra o prompt de comando dentro do diretório e digite o seguinte comando.
 ```
 python core.py
 ```
