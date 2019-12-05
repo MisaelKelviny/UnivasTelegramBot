@@ -33,6 +33,14 @@ Baixar este repositório, abra o prompt de comando dentro do diretório e digite
 python core.py
 ```
 
+caso não utilize este repositório, e crie um novo! é necessário criar um novo arquivo para ser usado como
+o principal arquivo do servidor. Lembrando que tem que ser do tipo .py 
+assim também utilizando o comando: 
+```
+python "nome do arquivo".py
+```
+
+
 # NOTAS
 Para tentar entender o projeto e sobre como funciona a maior parte do código foi encontrado na documentação 
 do próprio python-telegram-bot
