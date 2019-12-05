@@ -46,9 +46,33 @@ do próprio python-telegram-bot
 https://core.telegram.org/bots/api 
 
 
-
 O Tolken é utilizado nesta linha de código dentro do core.py
 ```
 updater = Updater(token='866382424:AAGVE7O492Xzak3OEwqKUojYF2TR7tNhb6A')
 dispatcher = updater.dispatcher
+```
+
+É necessário ter uma resposta para a palavra chave esperada, então é preciso criar uma função da seguinte forma:
+```
+def filtro(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="Olha!")
+```
+
+Para filtrar o palavras chaves dentro das mensagens lidas é só seguir o determinado código, que é basicamente
+declarar um handler que pega aquela palavra chave:
+```
+filtro_handler = MessageHandler((Filters.regex(re.compile(r'filtro', re.IGNORECASE))), filtro)
+```
+
+adiciona a resposta ao dispensador do telegram para que ele possa responder ao servidor do telegram:
+```
+dispatcher.add_handler(filtro_handler)
+```
+
+E ao final é importante adicionar as funções que pausam o servidor local, com o comando de CTRL+C:
+```
+# Start search for updates
+updater.start_polling(clean=True)
+# Stop the bot, if Ctrl + C were pressed
+updater.idle()
 ```
